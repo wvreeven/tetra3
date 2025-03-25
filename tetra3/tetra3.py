@@ -2449,7 +2449,7 @@ def get_centroids_from_image(
                 filtsize is not None
             ), "Must define filter size for local median background subtraction"
             assert filtsize % 2 == 1, "Filter size must be odd"
-            image = image - scipy.ndimage.filters.median_filter(
+            image = image - scipy.ndimage.median_filter(
                 image, size=filtsize, output=image.dtype
             )
         elif bg_sub_mode.lower() == "local_mean":
@@ -2457,7 +2457,7 @@ def get_centroids_from_image(
                 filtsize is not None
             ), "Must define filter size for local median background subtraction"
             assert filtsize % 2 == 1, "Filter size must be odd"
-            image = image - scipy.ndimage.filters.uniform_filter(
+            image = image - scipy.ndimage.uniform_filter(
                 image, size=filtsize, output=image.dtype
             )
         elif bg_sub_mode.lower() == "global_median":
@@ -2485,7 +2485,7 @@ def get_centroids_from_image(
             ), "Must define filter size for local median sigma mode"
             assert filtsize % 2 == 1, "Filter size must be odd"
             img_std = (
-                scipy.ndimage.filters.median_filter(
+                scipy.ndimage.median_filter(
                     np.abs(image), size=filtsize, output=image.dtype
                 )
                 * 1.48
@@ -2496,7 +2496,7 @@ def get_centroids_from_image(
             ), "Must define filter size for local median sigma mode"
             assert filtsize % 2 == 1, "Filter size must be odd"
             img_std = np.sqrt(
-                scipy.ndimage.filters.uniform_filter(
+                scipy.ndimage.uniform_filter(
                     image**2, size=filtsize, output=image.dtype
                 )
             )
