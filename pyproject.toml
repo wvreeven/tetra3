@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tetra3"
+description = "tetra3"
+authors = [
+    { name = "Wouter van Reeven", email = "wouter@van.reeven.nl" }
+]
+license = { text = "GPL" }
+classifiers = ["Programming Language :: Python :: 3"]
+dynamic = ["version"]
+dependencies = ["numpy", "Pillow", "scipy"]
+
+[tool.setuptools.dynamic]
+version = { attr = "setuptools_scm.get_version" }
+
+[tool.setuptools.packages.find]
+where = ["tetra3"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-cov",
+]
